@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React</title>
+
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <!-- Import React -->
+    <script type="text/javascript" src="../js/17.0.1/react.development.js"></script>
+    <script type="text/javascript" src="../js/17.0.1/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/17.0.1/babel.min.js"></script>
+    <script type="text/javascript" src="../js/17.0.1/prop-types.js"></script>
+    <script type="text/babel">
+        class Count extends React.Component {
+            constructor(props) {
+                console.log("Count---constructor");
+                super(props)
+                this.state = { count: 0 }
+
+            }
+
+            // UNSAFE_componentWillMount() {
+            //     console.log("Count---UNSAFE_componentWillMount");
+            // }
+
+            componentDidMount() {
+                console.log('Count---componentDidMount');
+            }
+
+            componentWillUnmount() {
+                console.log('Count---componentWillUnmount');
+
+            }
+
+            shouldComponentUpdate() {
+                console.log('Count---shouldComponentUpdate');
+                return true
+            }
+
+            // UNSAFE_componentWillUpdate() {
+            //     console.log('Count---UNSAFE_componentWillUpdate');
+            // }
+
+            componentDidUpdate(preProps, preState, snapshot) {
+                console.log('Count---componentDidUpdate', preProps, preState, snapshot);
+            }
+
+            static getDerivedStateFromProps(props, state) {
+                console.log("getDerivedStateFromProps", props, state);
+                // return { count: 101 }
+                return null
+            }
+
+            getSnapshotBeforeUpdate() {
+                console.log('getSnapshotBeforeUpdate');
+                return 'shotshotshot'
+            }
+
+            add = () => {
+                this.setState({ count: this.state.count + 1 })
+            }
+
+            death = () => {
+                ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+            }
+
+            force = () => {
+                this.forceUpdate()
+            }
+
+
+
+            render() {
+                console.log("Count---render");
+                return (
+                    <div>
+                        <h2>Current Sum {this.state.count} </h2>
+                        <button onClick={this.add}>Click Me To Add 1</button>
+                        <button onClick={this.death}>Unmount Component</button>
+                        <button onClick={this.force}>Force Update</button>
+                    </div>
+                )
+
+            }
+        }
+
+        // class A extends React.Component {
+        //     state = { carName: 'Benz' }
+
+        //     changeCar = () => {
+        //         this.setState({ carName: 'BMW' })
+        //     }
+
+        //     render() {
+        //         return (
+
+        //             <div>
+        //                 <div>
+        //                     This is component A
+        //                 </div>
+        //                 <button onClick={this.changeCar}>Change Car</button>
+        //                 <B carName={this.state.carName} />
+        //             </div>
+        //         )
+        //     }
+        // }
+
+        // class B extends React.Component {
+
+        //     UNSAFE_componentWillReceiveProps(props) {
+        //         console.log("B---UNSAFE_componentWillReceiveProps", props);
+        //     }
+
+        //     // shouldComponentUpdate() {
+        //     //     console.log("B---shouldComponentUpdate");
+        //     //     return true
+        //     // }
+        //     // componentWillUpdate() {
+        //     //     console.log('B---componentWillUpdate');
+        //     // }
+
+        //     // componentDidUpdate() {
+        //     //     console.log('B---componentDidUpdate');
+        //     // }
+
+        //     render() {
+        //         console.log("B---render");
+        //         return (
+        //             <div>
+        //                 This is component B, I am receiving: {this.props.carName}
+        //             </div>
+        //         )
+        //     }
+        // }
+
+
+        // ReactDOM.render(<Count />, document.getElementById("test"))
+        ReactDOM.render(<Count />, document.getElementById("test"))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React</title>
+
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <!-- Import React -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        class Login extends React.Component {
+            handleSubmit = (event) => {
+                event.preventDefault()
+                const { username, password } = this
+                alert(`Username: ${username.value}\nPassword: ${password.value}`)
+            }
+            render() {
+                w
+                return (
+                    <form action="http://www.atguigu.com" onSubmit={this.handleSubmit}>
+                        Username: <input ref={c => this.username = c} type="text" name='username' /> <br />
+                        Password: <input ref={c => this.password = c} type="password" name='password' /> <br />
+                        <button>Log In</button>
+                    </form>
+                )
+            }
+        }
+        ReactDOM.render(<Login />, document.getElementById('test'))
+    </script>
+</body>
+
+</html>

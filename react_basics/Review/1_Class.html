@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        class Person {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+            speak() {
+                console.log(`my name is ${this.name}, age ${this.age}`);
+            }
+        }
+        const p1 = new Person('tom', 19)
+        const p2 = new Person('mary', 33)
+        p1.speak()
+        p2.speak()
+        console.log(p1);
+        console.log(p2);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React</title>
+    <style>
+        .title {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <!-- Import React -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+        function MyComponent() {
+            return <h2>This is a component defined by a function</h2>
+        }
+        ReactDOM.render(<MyComponent />, document.getElementById('test'))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React</title>
+
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <!-- Import React -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        class Life extends React.Component {
+            state = { opacity: 1 }
+
+            death = () => {
+                ReactDOM.unmountComponentAtNode(document.getElementById("test"))
+            }
+
+            componentDidMount() {
+                this.timer = setInterval(() => {
+                    let { opacity } = this.state
+                    opacity -= 0.1
+                    if (opacity <= 0) opacity = 1
+                    this.setState({ opacity })
+                }, 200)
+            }
+
+            componentWillUnmount() {
+                clearInterval(this.timer)
+            }
+
+            render() {
+
+                return (
+                    <div>
+                        <h2 style={{ opacity: this.state.opacity }}>What to do if you cannot learn React?</h2>
+                        <button onClick={this.death}>Disappear</button>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Life />, document.getElementById('test'))
+    </script>
+</body>
+
+</html>

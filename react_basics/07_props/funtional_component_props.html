@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React</title>
+
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <!-- Import React -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        // class Person extends React.Component {
+        //     constructor(props) {
+        //         super(props)
+        //     }
+        //     static propTypes = {
+        //         name: PropTypes.string.isRequired,
+        //         gender: PropTypes.string,
+        //         age: PropTypes.number,
+        //         speak: PropTypes.func
+        //     }
+        //     static defaultProps = {
+        //         gender: "Unknown",
+        //         age: 18
+        //     }
+        //     render() {
+        //         return (
+        //             <ul>
+        //                 <li>Name: {this.props.name}</li>
+        //                 <li>Gender: {this.props.gender}</li>
+        //                 <li>Age: {this.props.age}</li>
+        //             </ul>
+        //         )
+        //     }
+        // }
+
+        const p = { name: 'Tom', gender: "male", age: 11 }
+        function speak() {
+            console.log("I am speaking");
+        }
+
+        function Person(props) {
+            const { name, age, gender } = props
+            return (
+                <ul>
+                    <li>Name: {name}</li>
+                    <li>Gender: {gender}</li>
+                    <li>Age: {age}</li>
+                </ul>
+            )
+        }
+        Person.propTypes = {
+            name: PropTypes.string.isRequired,
+            gender: PropTypes.string,
+            age: PropTypes.number,
+            speak: PropTypes.func
+        }
+        Person.defaultProps = {
+            gender: "Unknown",
+            age: 18
+        }
+
+
+        ReactDOM.render(<Person {...p} />, document.getElementById('test'))
+
+    </script>
+</body>
+
+</html>
